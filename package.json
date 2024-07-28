@@ -12,7 +12,7 @@
     "install-all": "npm install --prefix client && npm install --prefix server && npm install",
     "deploy": "npm run build --prefix client && npm start --prefix server",
     "deploy-cluster": "npm run build --prefix client && npm run cluster --prefix server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm test --prefix client && npm test --prefix server"
   },
   "keywords": [],
   "author": "",
