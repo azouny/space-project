@@ -10,14 +10,26 @@ jobs:
       CI: true
     strategy: 
       matrix: 
-        node-version: [18.x, 20.x]
+        node-version: [ 18.x, 20.x ]
+        mongo-version: [ '7.0' ]
+
     runs-on: ubuntu-latest
+    
     steps: 
       - uses: actions/checkout@v3
+      
       - name: Use NodeJS version ${{matrix.node-version}}
         uses: actions/setup-node@v4
         with:
           node-version: ${{matrix.node-version}}
+      
+      - name: Use MongoDB with github actions
+        uses: supercharge/mongodb-github-action@1.11.0
+        with:
+          mongo-version: ${{matrix.mongo-version}}
+
       - run: npm run install-all
+
       - run: npm run build --prefix client
+      
       - run: npm run test
