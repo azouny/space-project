@@ -9,9 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v3
-      - name: Use NodeJS version 16
-        uses: actions/setup-node@v3
+      - name: Use NodeJS version 20.x
+        uses: actions/setup-node@v4
         with:
-          node-version: '20.12'
+          node-version: '20.x'
       - run: npm install
       - run: npm run deploy --prefix client
